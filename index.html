@@ -30,6 +30,17 @@
             transform: translateY(-2px);
         }
 
+        .copy-box {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            position: relative;
+        }
+
         @media print {
             .no-print {
                 display: none;
@@ -79,8 +90,8 @@
                 <button onclick="showTab('structure')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 transition-all flex items-center gap-3" id="btn-structure">
                     <i class="fas fa-list-ol"></i> පිටු 16 ම සැකැස්ම
                 </button>
-                <button onclick="showTab('content')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 transition-all flex items-center gap-3" id="btn-content">
-                    <i class="fas fa-palette"></i> Content Guide
+                <button onclick="showTab('fulltext')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 transition-all flex items-center gap-3" id="btn-fulltext">
+                    <i class="fas fa-file-alt"></i> Full Booklet Text (English)
                 </button>
                 <button onclick="showTab('export')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 transition-all flex items-center gap-3" id="btn-export">
                     <i class="fas fa-file-export"></i> TOC & Export
@@ -201,33 +212,116 @@
                     </div>
                 </div>
 
-                <!-- Tab: Content Tips -->
-                <div id="content" class="tab-content animate-in fade-in">
+                <!-- Tab: Full Booklet Text -->
+                <div id="fulltext" class="tab-content animate-in fade-in">
                     <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
                         <span class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center italic">4</span>
-                        Content ලිවීමේදී උපදෙස්
+                        Full Booklet English Content
                     </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="p-5 border rounded-2xl bg-gradient-to-br from-white to-purple-50">
-                            <h4 class="font-bold text-purple-800 mb-2">Color Theory</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed">Color Wheel එකක් ඇතුළත් කර Primary, Secondary සහ Tertiary වර්ණ ගැන විස්තර කරන්න. Complementary සහ Analogous වර්ණ ගැන රූප සටහන් එක් කරන්න.</p>
+                    <p class="text-sm text-slate-500 mb-6 italic">පහත තියෙන Text කොටස් ඔයාගේ InDesign document එකේ අදාල පිටු වලට copy කරගන්න.</p>
+
+                    <div class="space-y-8">
+                        <!-- Elements Section -->
+                        <div class="space-y-3">
+                            <h3 class="font-bold text-indigo-700 uppercase text-sm border-b pb-1">Pages 04-05: Graphic Elements</h3>
+                            <div class="copy-box">
+GRAPHIC ELEMENTS
+
+Graphic elements are the building blocks of any design. 
+1. Line: The most basic element. Used to direct the eye or create boundaries.
+2. Shape: Geometric (circles, squares) or organic (natural) forms.
+3. Texture: The surface quality or feel of a design (visual or tactile).
+4. Space: The area around, between, or within components (Positive vs Negative space).
+5. Form: A three-dimensional object with volume and mass.
+6. Color: Used to evoke emotion and define brand identity.
+7. Value: The lightness or darkness of a color.</div>
                         </div>
-                        <div class="p-5 border rounded-2xl bg-gradient-to-br from-white to-emerald-50">
-                            <h4 class="font-bold text-emerald-800 mb-2">Raster vs Vector</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed">Resolution ගැන විස්තර කරන්න. Photoshop වල zoom කළ විට pixels පෙනෙන ආකාරයත් (Raster), Illustrator වල එසේ නොවන ආකාරයත් (Vector) රූප මගින් පෙන්වන්න.</p>
+
+                        <!-- Principles Section -->
+                        <div class="space-y-3">
+                            <h3 class="font-bold text-indigo-700 uppercase text-sm border-b pb-1">Pages 06-07: Graphic Principles</h3>
+                            <div class="copy-box">
+GRAPHIC PRINCIPLES
+
+Principles guide how elements are arranged to create effective communication.
+- Balance: The distribution of visual weight (Symmetrical vs Asymmetrical).
+- Contrast: Differences between elements to create emphasis (e.g., Black vs White).
+- Emphasis: The focal point of the design that draws attention.
+- Hierarchy: Organizing content to show order of importance.
+- Rhythm: Repeating elements to create a sense of movement.
+- Unity: When all elements belong together, creating a cohesive design.</div>
                         </div>
-                        <div class="p-5 border rounded-2xl bg-gradient-to-br from-white to-orange-50">
-                            <h4 class="font-bold text-orange-800 mb-2">Color Modes</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed">RGB (Digital Screens සඳහා) සහ CMYK (Print සඳහා) පාවිච්චි කරන අවස්ථා සටහන් කරන්න. CMYK වල 100% ක් භාවිතා වන අවස්ථා දක්වන්න.</p>
+
+                        <!-- Color Theory Section -->
+                        <div class="space-y-3">
+                            <h3 class="font-bold text-indigo-700 uppercase text-sm border-b pb-1">Pages 08-09: Color Theory</h3>
+                            <div class="copy-box">
+COLOR THEORY
+
+Color theory is the art and science of using color.
+The Color Wheel:
+- Primary Colors: Red, Yellow, Blue.
+- Secondary Colors: Orange, Green, Purple (mixed from primary colors).
+- Tertiary Colors: Created by mixing primary and secondary colors.
+
+Color Schemes:
+- Complementary: Colors opposite each other on the wheel.
+- Analogous: Colors next to each other on the wheel.
+- Warm Colors: Reds, Oranges, Yellows.
+- Cool Colors: Blues, Greens, Purples.</div>
                         </div>
-                        <div class="p-5 border rounded-2xl bg-gradient-to-br from-white to-blue-50">
-                            <h4 class="font-bold text-blue-800 mb-2">Typography</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed">Serif (අකුරු අග ඉරි ඇති) සහ Sans-Serif (ඉරි නැති) Fonts ගැන පෙන්වන්න. Alignment (Left, Center, Right, Justify) වැදගත්කම ලියන්න.</p>
+
+                        <!-- Color Modes Section -->
+                        <div class="space-y-3">
+                            <h3 class="font-bold text-indigo-700 uppercase text-sm border-b pb-1">Pages 10-11: Color Modes</h3>
+                            <div class="copy-box">
+COLOR MODES: RGB VS CMYK
+
+Understanding color modes is crucial for production quality.
+
+RGB (Red, Green, Blue):
+- Additive color model.
+- Used for digital screens (Web, Mobile, TV).
+- Colors are created by mixing light.
+
+CMYK (Cyan, Magenta, Yellow, Black):
+- Subtractive color model.
+- Used for printing processes.
+- Colors are created by mixing physical inks.</div>
                         </div>
-                    </div>
-                    <div class="mt-8 p-6 border-2 border-dashed border-slate-300 rounded-2xl text-center">
-                        <h4 class="font-bold text-slate-700 mb-2 uppercase">Image එකක් දාද්දී (Rule):</h4>
-                        <p class="text-sm text-slate-500 italic">කිසිවිටක Drag/Drop හෝ Copy/Paste කරන්න එපා. <br>සැමවිටම <b>Ctrl + D (Place)</b> කර Right click කර <b>Fitting > Fill Frame Proportionally</b> ලබා දෙන්න.</p>
+
+                        <!-- Raster vs Vector Section -->
+                        <div class="space-y-3">
+                            <h3 class="font-bold text-indigo-700 uppercase text-sm border-b pb-1">Pages 12-13: Raster vs Vector</h3>
+                            <div class="copy-box">
+RASTER VS VECTOR
+
+Raster Images:
+- Made of Pixels (tiny dots).
+- Resolution-dependent.
+- Examples: Photographs (.JPG, .PNG).
+- Software: Adobe Photoshop.
+
+Vector Graphics:
+- Made of Paths (mathematical formulas).
+- Resolution-independent (Scalable to any size).
+- Examples: Logos, Illustrations (.AI, .EPS).
+- Software: Adobe Illustrator.</div>
+                        </div>
+
+                        <!-- Typography Section -->
+                        <div class="space-y-3">
+                            <h3 class="font-bold text-indigo-700 uppercase text-sm border-b pb-1">Pages 14-15: Typography</h3>
+                            <div class="copy-box">
+TYPOGRAPHY
+
+Typography is the arrangement of type to make text legible and appealing.
+- Serif Fonts: Small strokes at the end of letters (e.g., Times New Roman).
+- Sans-Serif Fonts: Fonts without strokes (e.g., Arial, Helvetica).
+- Kerning: Space between individual letters.
+- Leading: Space between lines of text.
+- Alignment: Left, Center, Right, or Justified.</div>
+                        </div>
                     </div>
                 </div>
 
@@ -263,7 +357,7 @@
             </main>
         </div>
 
-        <footer class="mt-12 py-8 border-t text-center text-slate-400 text-sm">
+        <footer class="mt-12 py-8 border-t text-center text-slate-400 text-sm no-print">
             <p>© 2024 NVQ Level 4 Support | Adobe InDesign Technical Guide</p>
         </footer>
     </div>
