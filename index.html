@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InDesign Booklet Guide - NVQ 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .step-card {
+            transition: transform 0.2s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+            .print-only {
+                display: block;
+            }
+            body {
+                background-color: white;
+            }
+            .content-area {
+                border: none;
+                box-shadow: none;
+            }
+            .tab-content {
+                display: block !important;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-indigo-700 to-blue-600 text-white p-8 rounded-2xl shadow-xl mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold mb-2">NVQ 4: InDesign Booklet Guide</h1>
+                    <p class="text-indigo-100 italic">Adobe InDesign 2015-2020 සඳහා පියවරෙන් පියවර මගපෙන්වීම</p>
+                </div>
+                <button onclick="window.print()" class="no-print bg-white/20 hover:bg-white/30 px-6 py-2 rounded-full border border-white/40 transition-all flex items-center gap-2">
+                    <i class="fas fa-print"></i> PDF ලෙස ලබාගන්න
+                </button>
+            </div>
+        </header>
+
+        <div class="grid md:grid-cols-4 gap-8">
+            <!-- Sidebar -->
+            <aside class="no-print space-y-3">
+                <button onclick="showTab('setup')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-indigo-600 text-white shadow-md transition-all flex items-center gap-3" id="btn-setup">
+                    <i class="fas fa-cog"></i> Setup (මුලික සැකසුම්)
+                </button>
+                <button onclick="showTab('master')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 transition-all flex items-center gap-3" id="btn-master">
+                    <i class="fas fa-copy"></i> Master Pages
+                </button>
+                <button onclick="showTab('structure')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 transition-all flex items-center gap-3" id="btn-structure">
+                    <i class="fas fa-list-ol"></i> පිටු 16 ම සැකැස්ම
+                </button>
+                <button onclick="showTab('content')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 transition-all flex items-center gap-3" id="btn-content">
+                    <i class="fas fa-palette"></i> Content Guide
+                </button>
+                <button onclick="showTab('export')" class="tab-btn w-full text-left p-4 rounded-xl font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 transition-all flex items-center gap-3" id="btn-export">
+                    <i class="fas fa-file-export"></i> TOC & Export
+                </button>
+
+                <div class="mt-8 p-6 bg-slate-900 text-white rounded-2xl">
+                    <h4 class="text-indigo-400 font-bold text-sm uppercase mb-4 tracking-wider">වැදගත් Shortcuts</h4>
+                    <ul class="space-y-3 text-sm font-mono opacity-80">
+                        <li><span class="text-indigo-300">Ctrl + N</span> : New File</li>
+                        <li><span class="text-indigo-300">Ctrl + D</span> : Place Image</li>
+                        <li><span class="text-indigo-300">W</span> : Preview Mode</li>
+                        <li><span class="text-indigo-300">Ctrl + T</span> : Character Panel</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="md:col-span-3 bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-slate-200 content-area">
+                
+                <!-- Tab: Setup -->
+                <div id="setup" class="tab-content active animate-in fade-in">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                        <span class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center italic">1</span>
+                        Document එක Setup කිරීම
+                    </h2>
+                    <div class="space-y-6">
+                        <p class="text-slate-600 leading-relaxed italic">InDesign විවෘත කර **File > New > Document** යන්න. එහිදී පහත අගයන් ලබා දෙන්න.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-4 border rounded-xl bg-slate-50">
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Page Size</span>
+                                <p class="text-lg font-bold text-slate-700 leading-tight">A5 (හෝ A4)</p>
+                            </div>
+                            <div class="p-4 border rounded-xl bg-slate-50">
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Number of Pages</span>
+                                <p class="text-lg font-bold text-slate-700 leading-tight">16 Pages</p>
+                            </div>
+                            <div class="p-4 border rounded-xl bg-blue-50 border-blue-100">
+                                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Facing Pages</span>
+                                <p class="text-lg font-bold text-blue-700 leading-tight">Ticked (පොතක් ලෙස)</p>
+                            </div>
+                            <div class="p-4 border rounded-xl bg-red-50 border-red-100">
+                                <span class="text-xs font-bold text-red-400 uppercase tracking-widest">Bleed Settings</span>
+                                <p class="text-lg font-bold text-red-700 leading-tight">3 mm (සියලු පැති වලට)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-50 p-5 rounded-xl border-l-4 border-amber-400">
+                            <h4 class="font-bold text-amber-800 mb-2 underline">NVQ Tip:</h4>
+                            <p class="text-sm text-amber-700">Exam එකේදී 'Bleed' තිබීම අනිවාර්යයි. එසේ නොවුණහොත් ලකුණු අඩු විය හැක.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Master Pages -->
+                <div id="master" class="tab-content animate-in fade-in">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                        <span class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center italic">2</span>
+                        Master Pages (පිටු අංක සහ Header)
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                            <h4 class="font-bold text-indigo-700 mb-4 flex items-center gap-2">
+                                <i class="fas fa-hashtag"></i> Auto Page Numbering දාන හැටි:
+                            </h4>
+                            <ol class="space-y-4 text-slate-700">
+                                <li class="flex gap-4">
+                                    <span class="bg-slate-100 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0">1</span>
+                                    <span><b>Pages Panel</b> (Window > Pages) එකට ගොස් ඉහළින් ඇති <b>A-Master</b> එක මත double-click කරන්න.</span>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="bg-slate-100 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0">2</span>
+                                    <span>පිටුවේ පහළ කෙළවරේ කුඩා Text box එකක් අඳින්න.</span>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="bg-slate-100 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0">3</span>
+                                    <span class="bg-slate-50 p-2 rounded border font-mono text-sm italic">Type > Insert Special Character > Markers > Current Page Number</span>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="bg-slate-100 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0">4</span>
+                                    <span>පිටුවල "A" ලෙස අකුරක් වැටෙන අතර, එය පිටු වලට යද්දී අංක වලට auto මාරු වේ.</span>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+                            <p class="text-sm text-indigo-800 leading-relaxed"><b>Header & Footer:</b> පොතේ නම (Graphic Design Guide) වැනි දේවල් Master page එකේ උඩින් සටහන් කළ විට එය සෑම පිටුවකටම එකවර වැටේ.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Structure -->
+                <div id="structure" class="tab-content animate-in fade-in">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                        <span class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center italic">3</span>
+                        පිටු 16 ක පිළිවෙළ (Content Roadmap)
+                    </h2>
+                    <div class="overflow-x-auto rounded-xl border">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="p-4 text-xs font-bold text-slate-400 uppercase">Page</th>
+                                    <th class="p-4 text-xs font-bold text-slate-400 uppercase">Topic</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y text-sm">
+                                <tr><td class="p-4 font-bold text-indigo-600">01</td><td class="p-4">Cover Page (ආකර්ශනීය ලෙස පොතේ නම සහ විස්තර)</td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">02</td><td class="p-4">Inner Cover (ස්තුතිය හෝ හැඳින්වීම)</td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">03</td><td class="p-4"><b>Table of Contents (පටුන)</b></td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">04-05</td><td class="p-4">Graphic Elements (Line, Shape, Texture, Space, Form)</td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">06-07</td><td class="p-4">Graphic Principles (Balance, Contrast, Hierarchy, Rhythm)</td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">08-09</td><td class="p-4"><b>Color Theory (Color Wheel සහ Primary වර්ණ)</b></td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">10-11</td><td class="p-4">Color Modes (RGB vs CMYK වෙනස)</td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">12-13</td><td class="p-4">Raster vs Vector (Resolution සහ Pixels vs Paths)</td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">14-15</td><td class="p-4">Typography (Serif, Sans-Serif වර්ග)</td></tr>
+                                <tr><td class="p-4 font-bold text-indigo-600">16</td><td class="p-4">Back Cover</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab: Content Tips -->
+                <div id="content" class="tab-content animate-in fade-in">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                        <span class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center italic">4</span>
+                        Content ලිවීමේදී උපදෙස්
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="p-5 border rounded-2xl bg-gradient-to-br from-white to-purple-50">
+                            <h4 class="font-bold text-purple-800 mb-2">Color Theory</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Color Wheel එකක් ඇතුළත් කර Primary, Secondary සහ Tertiary වර්ණ ගැන විස්තර කරන්න. Complementary සහ Analogous වර්ණ ගැන රූප සටහන් එක් කරන්න.</p>
+                        </div>
+                        <div class="p-5 border rounded-2xl bg-gradient-to-br from-white to-emerald-50">
+                            <h4 class="font-bold text-emerald-800 mb-2">Raster vs Vector</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Resolution ගැන විස්තර කරන්න. Photoshop වල zoom කළ විට pixels පෙනෙන ආකාරයත් (Raster), Illustrator වල එසේ නොවන ආකාරයත් (Vector) රූප මගින් පෙන්වන්න.</p>
+                        </div>
+                        <div class="p-5 border rounded-2xl bg-gradient-to-br from-white to-orange-50">
+                            <h4 class="font-bold text-orange-800 mb-2">Color Modes</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">RGB (Digital Screens සඳහා) සහ CMYK (Print සඳහා) පාවිච්චි කරන අවස්ථා සටහන් කරන්න. CMYK වල 100% ක් භාවිතා වන අවස්ථා දක්වන්න.</p>
+                        </div>
+                        <div class="p-5 border rounded-2xl bg-gradient-to-br from-white to-blue-50">
+                            <h4 class="font-bold text-blue-800 mb-2">Typography</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Serif (අකුරු අග ඉරි ඇති) සහ Sans-Serif (ඉරි නැති) Fonts ගැන පෙන්වන්න. Alignment (Left, Center, Right, Justify) වැදගත්කම ලියන්න.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 p-6 border-2 border-dashed border-slate-300 rounded-2xl text-center">
+                        <h4 class="font-bold text-slate-700 mb-2 uppercase">Image එකක් දාද්දී (Rule):</h4>
+                        <p class="text-sm text-slate-500 italic">කිසිවිටක Drag/Drop හෝ Copy/Paste කරන්න එපා. <br>සැමවිටම <b>Ctrl + D (Place)</b> කර Right click කර <b>Fitting > Fill Frame Proportionally</b> ලබා දෙන්න.</p>
+                    </div>
+                </div>
+
+                <!-- Tab: Export -->
+                <div id="export" class="tab-content animate-in fade-in">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                        <span class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center italic">5</span>
+                        TOC සහ අවසන් Export එක
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="p-6 bg-slate-900 text-slate-100 rounded-2xl">
+                            <h3 class="text-lg font-bold mb-4 text-indigo-300">Auto පටුන (TOC) හදන හැටි:</h3>
+                            <ul class="space-y-3 text-sm">
+                                <li>1. සෑම මාතෘකාවකටම <b>Paragraph Style</b> එකක් ලබා දෙන්න.</li>
+                                <li>2. පටුන එන පිටුවට ගොස් <b>Layout > Table of Contents</b> යන්න.</li>
+                                <li>3. එහිදී එම Paragraph Style එක ඇතුළත් කර OK කරන්න. පටුන ඉබේම සැකසේ.</li>
+                            </ul>
+                        </div>
+
+                        <div class="p-6 bg-indigo-600 text-white rounded-2xl shadow-xl">
+                            <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+                                <i class="fas fa-file-pdf"></i> Export for Printing:
+                            </h3>
+                            <ul class="space-y-2 text-sm opacity-90">
+                                <li>• <b>File > Export</b> ගොස් Format එක <b>Adobe PDF (Print)</b> දෙන්න.</li>
+                                <li>• Adobe PDF Preset එකට <b>[High Quality Print]</b> තෝරන්න.</li>
+                                <li>• <b>Marks and Bleeds</b> tab එකට ගොස් <b>'Crop Marks'</b> සහ <b>'Use Document Bleed Settings'</b> ටික් කරන්න.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <footer class="mt-12 py-8 border-t text-center text-slate-400 text-sm">
+            <p>© 2024 NVQ Level 4 Support | Adobe InDesign Technical Guide</p>
+        </footer>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+
+            // Update button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+            });
+
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+            activeBtn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+        }
+    </script>
+</body>
+</html>
